@@ -28,36 +28,44 @@ class FornecedoresController extends Controller
 
     public function gravar(Request $request) {
         //dd($request->all());
-        $nome = $request->input("nome");
+        $NomeCompanhia = $request->input("NomeCompanhia");
         DB::table('fornecedores')
         ->insert(
-            ['nome'=>$nome,
-            'valor'=>'10',
-            'descricao'=>'teste',
-            'quantidade'=>'10']
+            ['IDFornecedor'=>$IDFornecedor,
+            'NomeCompanhia'=>'abd',
+            'NomeContato'=>'teste',
+            'TituloContato'=>'10'
+            'Endereco'=>'abd',
+            'Cidade'=>'teste',
+            'Regiao'=>'10'
+            'cep'=>'abd',
+            'Pais'=>'teste',
+            'Telefone'=>'10'
+            'Fax'=>'abd',
+            'Website'=>'10']
         );
         return redirect('/fornecedores');
     }
 
-    public function deletar(Request $request, $id) {
-        DB::table('fornecedores')->where('id', '=', $id)->delete();
+    public function deletar(Request $request, $IDFornecedor) {
+        DB::table('fornecedores')->where('IDFornecedor', '=', $IDFornecedor)->delete();
         return redirect('/fornecedores');
     }
 
-    public function formularioAlterar(Request $request, $id) {
+    public function formularioAlterar(Request $request, $IDFornecedor) {
         $fornecedores = DB::table('fornecedores')
-                        ->where('id', '=', $id)
+                        ->where('IDSornecedor', '=', $IDFornecedor)
                         ->get();
                         //dd($fornecedores[0]);
         return view("fornecedores.alterar")->withFornecedores($fornecedores[0]);
     }
 
-    public function alterar(Request $request, $id) {
+    public function alterar(Request $request, $IDFornecedor) {
         //dd($request->all());
-        $nome = $request->input("nome");
+        $nome = $request->input("NomeCompanhia");
         DB::table('fornecedores')
-            ->where('id', '=', $id)
-            ->update(['nome' => $nome]);
+            ->where('IDFornecedor', '=', $IDFornecedor)
+            ->update(['NomeComapnhia' => $NomeCompanhia]);
         
         return redirect('/fornecedores');
     }
