@@ -62,7 +62,7 @@ class FornecedoresController extends Controller
 
     public function alterar(Request $request, $IDFornecedor) {
         //dd($request->all());
-        $nome = $request->input("NomeCompanhia");
+        $NomeCompanhia = $request->input("NomeCompanhia");
         DB::table('fornecedores')
             ->where('IDFornecedor', '=', $IDFornecedor)
             ->update(['NomeComapnhia' => $NomeCompanhia]);

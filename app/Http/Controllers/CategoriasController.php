@@ -54,7 +54,7 @@ class CategoriasController extends Controller
 
     public function alterar(Request $request, $id) {
         //dd($request->all());
-        $nome = $request->input("NomeCategoria");
+        $NomeCategoria = $request->input("NomeCategoria");
         DB::table('categorias')
             ->where('IDCategoria', '=', $IDCategoria)
             ->update(['NomeCategoria' => $NomeCategoria]);

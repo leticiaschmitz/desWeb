@@ -68,7 +68,7 @@ class FuncionariosController extends Controller
 
     public function alterar(Request $request, $IDFuncionario) {
         //dd($request->all());
-        $nome = $request->input("Nome");
+        $Nome = $request->input("Nome");
         DB::table('funcionarios')
             ->where('IDFuncionario', '=', $IDFunconario)
             ->update(['Nome' => $Nome]);

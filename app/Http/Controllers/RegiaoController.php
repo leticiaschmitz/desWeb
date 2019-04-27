@@ -52,7 +52,7 @@ class RegiaoController extends Controller
 
     public function alterar(Request $request, $id) {
         //dd($request->all());
-        $nome = $request->input("DescricaoRegiao");
+        $DescricaoRegiao = $request->input("DescricaoRegiao");
         DB::table('regiao')
             ->where('IDRegiao', '=', $IDRegiao)
             ->update(['DescricaoRegiao' => $DescricaoRegiao]);

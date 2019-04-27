@@ -64,7 +64,7 @@ class OrdensController extends Controller
 
     public function alterar(Request $request, $IDOrdens) {
         //dd($request->all());
-        $nome = $request->input("IDCliente");
+        $IDCliente = $request->input("IDCliente");
         DB::table('ordens')
             ->where('IDOrdens', '=', $IDOrdens)
             ->update(['IDCliente' => $IDCliente]);
