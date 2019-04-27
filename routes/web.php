@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/marcondes', function () {
+Route::get('/leticiadaniele', function () {
     return "<h1>Funciona?</h1>";
 });
 
