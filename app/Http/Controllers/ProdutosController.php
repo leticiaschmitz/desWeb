@@ -60,7 +60,7 @@ class ProdutosController extends Controller
 
     public function alterar(Request $request, $IDProduto) {
         //dd($request->all());
-        $nome = $request->input("NomeProduto");
+        $NomeProduto = $request->input("NomeProduto");
         DB::table('produtos')
             ->where('IDProduto', '=', $IDProduto)
             ->update(['NomeProduto' => $NomeProduto]);
