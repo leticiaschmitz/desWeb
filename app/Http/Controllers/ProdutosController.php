@@ -58,7 +58,7 @@ class ProdutosController extends Controller
         return view("produtos.alterar")->withProdutos($produtos[0]);
     }
 
-    public function alterar(Request $request, $id) {
+    public function alterar(Request $request, $IDProduto) {
         //dd($request->all());
         $nome = $request->input("NomeProduto");
         DB::table('produtos')
