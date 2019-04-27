@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProdutoController extends Controller
+class ProdutosController extends Controller
 {
         /**
      * Create a new controller instance.
@@ -51,7 +51,7 @@ class ProdutoController extends Controller
     }
 
     public function formularioAlterar(Request $request, $IDProduto) {
-        $produto = DB::table('produtos')
+        $produtos = DB::table('produtos')
                         ->where('IDProduto', '=', $IDProduto)
                         ->get();
                         //dd($produtos[0]);
