@@ -19,45 +19,51 @@ class ProdutoController extends Controller
     
     public function lista() {
         $produtos = DB::select("select * from produtos");
-        return view("produto.listagem")->withProdutos($produtos);
+        return view("produtos.listagem")->withProdutos($produtos);
     }
 
     public function formulario() {
-        return view("produto.formulario");
+        return view("produtos.formulario");
     }
 
     public function gravar(Request $request) {
         //dd($request->all());
-        $nome = $request->input("nome");
+        $NomeProduto = $request->input("NomeProduto");
         DB::table('produtos')
         ->insert(
-            ['nome'=>$nome,
-            'valor'=>'10',
-            'descricao'=>'teste',
-            'quantidade'=>'10']
+            ['IDProduto'=>$IDProduto,
+            'NomeProduto'=>'abf',
+            'IDFornecedor'=>'123',
+            'IDCategoria'=>'10'
+            'QuantifadePorUnidade'=>'2',
+            'PrecoUnitario'=>'123',
+            'UnidadesEmEstoque'=>'10'
+            'UnidadesEmOrdem'=>'10'
+            'NivelDeReposicao'=>'2',
+            'Descontinuando'=>'10']
         );
         return redirect('/produtos');
     }
 
-    public function deletar(Request $request, $id) {
-        DB::table('produtos')->where('id', '=', $id)->delete();
+    public function deletar(Request $request, $IDProduto) {
+        DB::table('produtos')->where('IDProduto', '=', $IDProduto)->delete();
         return redirect('/produtos');
     }
 
-    public function formularioAlterar(Request $request, $id) {
+    public function formularioAlterar(Request $request, $IDProduto) {
         $produto = DB::table('produtos')
-                        ->where('id', '=', $id)
+                        ->where('IDProduto', '=', $IDProduto)
                         ->get();
-                        //dd($produto[0]);
-        return view("produto.alterar")->withProduto($produto[0]);
+                        //dd($produtos[0]);
+        return view("produtos.alterar")->withProdutos($produtos[0]);
     }
 
     public function alterar(Request $request, $id) {
         //dd($request->all());
-        $nome = $request->input("nome");
+        $nome = $request->input("NomeProduto");
         DB::table('produtos')
-            ->where('id', '=', $id)
-            ->update(['nome' => $nome]);
+            ->where('IDProduto', '=', $IDProduto)
+            ->update(['NomeProduto' => $NomeProduto]);
         
         return redirect('/produtos');
     }
